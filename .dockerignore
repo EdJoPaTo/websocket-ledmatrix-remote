@@ -1,0 +1,8 @@
+.*
+*.md
+**/*.test.*
+**/test.*
+Dockerfile
+
+client-local.ts
+public/client.js

@@ -1,0 +1,51 @@
+html {
+	--color: whitesmoke;
+}
+
+html, body {
+	background-color: #222;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	text-align: center;
+}
+
+header, footer a {
+	color: var(--color);
+}
+
+footer {
+	margin: 1rem auto;
+}
+
+input {
+	width: 95%;
+	margin: auto 1vw;
+}
+#r {
+	accent-color: red;
+}
+#g {
+	accent-color: green;
+}
+#b {
+	accent-color: blue;
+}
+
+#field {
+	user-select: none;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.row div {
+	height: 2.3vh;
+	width: 2.3vh;
+
+	background-color: black;
+	cursor: pointer;
+	margin: 1px;
+	touch-action: none;
+}
