@@ -10,10 +10,11 @@ router.get("/ws", (ctx) => {
   if (!ctx.isUpgradable) {
     ctx.throw(501);
   }
+
   const ws = ctx.upgrade();
   const uid = crypto.randomUUID();
 
-  ws.onopen = () => {
+  ws.addEventListener("open", () => {
     try {
       sockets.set(uid, ws);
       console.log(
@@ -26,8 +27,8 @@ router.get("/ws", (ctx) => {
       console.log("ERROR onopen", error);
       ws.close(1008, "Server Error");
     }
-  };
-  ws.onclose = () => {
+  });
+  ws.addEventListener("close", () => {
     sockets.delete(uid);
     console.log(
       "Disconncted from client",
@@ -35,8 +36,8 @@ router.get("/ws", (ctx) => {
       "current connections",
       sockets.size,
     );
-  };
-  ws.onmessage = (m) => {
+  });
+  ws.addEventListener("message", (m) => {
     try {
       const data = JSON.parse(m.data) as unknown;
       if (isPerfectPixel(data, WIDTH, HEIGHT)) {
@@ -52,7 +53,7 @@ router.get("/ws", (ctx) => {
       );
       ws.close(1008, "Server Error");
     }
-  };
+  });
 });
 
 router.get("/healthz", (ctx) => {
@@ -74,7 +75,7 @@ app.use(async (ctx) => {
   });
 });
 
-console.log(`HTTP webserver running. Access it at: http://localhost:8080/`);
+console.log("HTTP webserver running. Access it at: http://localhost:8080/");
 await app.listen({ port: 8080 });
 
 function broadcastPixel(pixel: Pixel, skipUid: string | undefined) {

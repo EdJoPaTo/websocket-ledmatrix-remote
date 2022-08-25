@@ -4,15 +4,15 @@ export type Pixel = {
   readonly r: number;
   readonly g: number;
   readonly b: number;
-}
+};
 
 function isRecord(r: unknown): r is Record<string, unknown> {
   return typeof r === "object" && r !== null;
 }
 
-function isIntegerInRange(num: unknown, exclusiveMax: number): num is number {
-  return typeof num === "number" && Math.floor(num) === num && num >= 0 &&
-    num < exclusiveMax;
+function isIntegerInRange(i: unknown, exclusiveMax: number): i is number {
+  return typeof i === "number" && Math.floor(i) === i && i >= 0 &&
+    i < exclusiveMax;
 }
 
 export function hasPixel(

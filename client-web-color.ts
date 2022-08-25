@@ -6,9 +6,9 @@ rInput.value = Math.floor(Math.random() * 256).toFixed(0);
 gInput.value = Math.floor(Math.random() * 256).toFixed(0);
 bInput.value = Math.floor(Math.random() * 256).toFixed(0);
 
-rInput.onchange = updateTextcolor;
-gInput.onchange = updateTextcolor;
-bInput.onchange = updateTextcolor;
+rInput.addEventListener("change", updateTextcolor);
+gInput.addEventListener("change", updateTextcolor);
+bInput.addEventListener("change", updateTextcolor);
 updateTextcolor();
 function updateTextcolor() {
   const { r, g, b } = getCurrentColor();

@@ -7,8 +7,9 @@ export class Client {
   #ws: WebSocket;
   constructor(
     public readonly server: string,
-    public readonly onPixel: PixelFunc = (pixel) =>
-      console.log("new pixel", pixel),
+    public readonly onPixel: PixelFunc = (pixel) => {
+      console.log("new pixel", pixel);
+    },
   ) {
     this.#ws = connect(server, onPixel);
     setInterval(() => {
@@ -19,7 +20,7 @@ export class Client {
     }, 2500);
   }
 
-  public send(pixel: Pixel) {
+  public send(pixel: Pixel): void {
     this.#ws.send(JSON.stringify(pixel));
   }
 }
@@ -27,9 +28,13 @@ export class Client {
 function connect(server: string, onPixel: PixelFunc) {
   console.log("Connecting to", server);
   const ws = new WebSocket(server);
-  ws.onopen = () => console.log("Connected to server", server);
-  ws.onclose = () => console.warn("Disconnected from server", server);
-  ws.onmessage = (m) => {
+  ws.addEventListener("open", () => {
+    console.log("Connected to server", server);
+  });
+  ws.addEventListener("close", () => {
+    console.warn("Disconnected from server", server);
+  });
+  ws.addEventListener("message", (m) => {
     try {
       const data = JSON.parse(m.data) as unknown;
       if (hasPixel(data, WIDTH, HEIGHT)) {
@@ -40,6 +45,7 @@ function connect(server: string, onPixel: PixelFunc) {
     } catch (error: unknown) {
       console.error("onmessage ERROR", error, m.data);
     }
-  };
+  });
+
   return ws;
 }
