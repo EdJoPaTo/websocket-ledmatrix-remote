@@ -69,10 +69,10 @@ setInterval(() => {
       const color = field.style.backgroundColor;
       if (color.startsWith("rgb(")) {
         const [r, g, b] = color.slice(4, -1).split(",").map((o) =>
-          Math.max(0, Math.floor(Number(o.trim()) * 0.9))
+          Math.max(0, Math.floor(Number(o.trim()) * 0.99))
         );
         field.style.backgroundColor = r || g || b ? `rgb(${r},${g},${b})` : "";
       }
     }
   }
-}, 100);
+}, 35);
