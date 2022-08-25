@@ -1,4 +1,4 @@
-export interface Pixel {
+export type Pixel = {
   readonly x: number;
   readonly y: number;
   readonly r: number;
