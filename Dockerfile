@@ -2,7 +2,7 @@ FROM docker.io/denoland/deno:1.25.0
 WORKDIR /app
 EXPOSE 8080
 
-COPY deno.json *.ts ./
+COPY deno.jsonc *.ts ./
 RUN deno cache *.ts
 
 COPY . ./
