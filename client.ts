@@ -1,5 +1,6 @@
 import { HEIGHT, WIDTH } from "./constants.ts";
-import { hasPixel, Pixel } from "./pixel.ts";
+import { hasPixel } from "./pixel.ts";
+import type { Pixel } from "./pixel.ts";
 
 type PixelFunc = (pixel: Pixel) => void;
 
