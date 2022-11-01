@@ -1,4 +1,9 @@
 FROM docker.io/denoland/deno:1.27.0
+RUN apt-get update \
+	&& apt-get upgrade -y \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /var/cache/* /var/log/*
+
 WORKDIR /app
 EXPOSE 8080
 
