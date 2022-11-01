@@ -1,4 +1,4 @@
-FROM docker.io/denoland/deno:1.26.0
+FROM docker.io/denoland/deno:1.27.0
 WORKDIR /app
 EXPOSE 8080
 
