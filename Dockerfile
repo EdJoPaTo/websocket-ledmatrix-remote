@@ -1,4 +1,7 @@
-FROM docker.io/denoland/deno:1.29.1
+FROM docker.io/lukechannings/deno:latest AS deno
+
+FROM docker.io/library/debian:bullseye-slim
+COPY --from=deno /usr/bin/deno /usr/local/bin/
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get clean \
@@ -13,4 +16,4 @@ RUN deno cache *.ts
 COPY . ./
 RUN deno bundle client-web.ts public/client.js
 
-CMD deno run --allow-net=:8080 --allow-read websocket-ledmatrix-remote.ts
+CMD ["deno", "run", "--allow-net=:8080", "--allow-read", "websocket-ledmatrix-remote.ts"]
