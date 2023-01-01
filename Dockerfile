@@ -1,4 +1,4 @@
-FROM docker.io/denoland/deno:1.28.2
+FROM docker.io/denoland/deno:1.29.1
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get clean \
