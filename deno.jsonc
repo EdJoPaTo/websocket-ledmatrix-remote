@@ -1,4 +1,5 @@
 {
+  "lock": false,
   // https://deno.land/manual/getting_started/configuration_file
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"],
