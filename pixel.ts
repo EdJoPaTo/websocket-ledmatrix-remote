@@ -21,11 +21,11 @@ export function hasPixel(
   height: number,
 ): p is Pixel {
   return isRecord(p) &&
-    isIntegerInRange(p.x, width) &&
-    isIntegerInRange(p.y, height) &&
-    isIntegerInRange(p.r, 256) &&
-    isIntegerInRange(p.g, 256) &&
-    isIntegerInRange(p.b, 256);
+    isIntegerInRange(p["x"], width) &&
+    isIntegerInRange(p["y"], height) &&
+    isIntegerInRange(p["r"], 256) &&
+    isIntegerInRange(p["g"], 256) &&
+    isIntegerInRange(p["b"], 256);
 }
 
 export function isPerfectPixel(
@@ -35,9 +35,9 @@ export function isPerfectPixel(
 ): p is Pixel {
   return isRecord(p) &&
     Object.keys(p).length === 5 &&
-    isIntegerInRange(p.x, width) &&
-    isIntegerInRange(p.y, height) &&
-    isIntegerInRange(p.r, 256) &&
-    isIntegerInRange(p.g, 256) &&
-    isIntegerInRange(p.b, 256);
+    isIntegerInRange(p["x"], width) &&
+    isIntegerInRange(p["y"], height) &&
+    isIntegerInRange(p["r"], 256) &&
+    isIntegerInRange(p["g"], 256) &&
+    isIntegerInRange(p["b"], 256);
 }
