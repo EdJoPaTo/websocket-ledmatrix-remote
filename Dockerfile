@@ -1,7 +1,14 @@
 FROM docker.io/lukechannings/deno:latest AS deno
 
 FROM docker.io/library/debian:bullseye-slim
+
 COPY --from=deno /usr/bin/deno /usr/local/bin/
+RUN useradd --uid 1993 --user-group deno \
+	&& mkdir -p /deno-dir \
+	&& chown deno:deno /deno-dir
+ENV DENO_DIR /deno-dir/
+ENV DENO_INSTALL_ROOT /usr/local
+
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get clean \
@@ -10,10 +17,8 @@ RUN apt-get update \
 WORKDIR /app
 EXPOSE 8080
 
-COPY deno.jsonc *.ts ./
-RUN deno cache *.ts
-
 COPY . ./
+RUN deno cache *.ts
 RUN deno bundle client-web.ts public/client.js
 
 CMD ["deno", "run", "--allow-net=:8080", "--allow-read", "websocket-ledmatrix-remote.ts"]
