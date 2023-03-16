@@ -19,6 +19,6 @@ EXPOSE 8080
 
 COPY . ./
 RUN deno cache *.ts
-RUN deno bundle client-web.ts public/client.js
+RUN deno run --allow-env --allow-read --allow-write --allow-net=deno.land bundle.ts
 
 CMD ["deno", "run", "--allow-net=:8080", "--allow-read", "websocket-ledmatrix-remote.ts"]
