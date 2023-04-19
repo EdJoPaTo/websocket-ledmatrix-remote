@@ -11,14 +11,14 @@ gInput.addEventListener("change", updateTextcolor);
 bInput.addEventListener("change", updateTextcolor);
 updateTextcolor();
 function updateTextcolor() {
-  const { r, g, b } = getCurrentColor();
-  document.documentElement.style.setProperty("--color", `rgb(${r},${g},${b})`);
+	const { r, g, b } = getCurrentColor();
+	document.documentElement.style.setProperty("--color", `rgb(${r},${g},${b})`);
 }
 
 export function getCurrentColor(): { r: number; g: number; b: number } {
-  return {
-    r: Number(rInput.value),
-    g: Number(gInput.value),
-    b: Number(bInput.value),
-  };
+	return {
+		r: Number(rInput.value),
+		g: Number(gInput.value),
+		b: Number(bInput.value),
+	};
 }
