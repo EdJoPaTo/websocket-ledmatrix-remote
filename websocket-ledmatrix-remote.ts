@@ -1,4 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak@v12.1.0/mod.ts";
+import { Application, Router } from "https://deno.land/x/oak@v12.2.0/mod.ts";
 import { HEIGHT, WIDTH } from "./constants.ts";
 import { isPerfectPixel } from "./pixel.ts";
 import type { Pixel } from "./pixel.ts";
@@ -71,7 +71,7 @@ app.use(router.allowedMethods());
 app.use(async (ctx) => {
   await ctx.send({
     index: "index.html",
-    maxage: 1000 * 60 * 60 * 20, // 20h
+    // maxage: 1000 * 60 * 60 * 20, // 20h
     root: `${Deno.cwd()}/public`,
   });
 });
