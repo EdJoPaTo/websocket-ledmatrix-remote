@@ -35,6 +35,9 @@ function connect(server: string, onPixel: PixelFunc) {
 	ws.addEventListener("close", () => {
 		console.warn("Disconnected from server", server);
 	});
+	ws.addEventListener("error", (ev) => {
+		console.error("WebSocket ERROR", ev);
+	});
 	ws.addEventListener("message", (m) => {
 		try {
 			const data = JSON.parse(m.data) as unknown;

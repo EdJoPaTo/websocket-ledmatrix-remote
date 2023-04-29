@@ -38,6 +38,9 @@ router.get("/ws", (ctx) => {
 			sockets.size,
 		);
 	});
+	ws.addEventListener("error", (ev) => {
+		console.log("WebSocket ERROR", ev);
+	});
 	ws.addEventListener("message", (m) => {
 		try {
 			const data = JSON.parse(m.data) as unknown;
