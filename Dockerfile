@@ -5,7 +5,8 @@ FROM docker.io/library/debian:bullseye-slim
 COPY --from=deno /usr/bin/deno /usr/local/bin/
 RUN useradd --uid 1993 --user-group deno \
 	&& mkdir -p /deno-dir \
-	&& chown deno:deno /deno-dir
+	&& chown deno:deno /deno-dir \
+	&& deno --version
 ENV DENO_DIR /deno-dir/
 ENV DENO_INSTALL_ROOT /usr/local
 
