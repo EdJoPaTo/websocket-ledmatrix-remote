@@ -83,10 +83,7 @@ console.log("HTTP webserver running. Access it at: http://localhost:8080/");
 await app.listen({ port: 8080 });
 
 function broadcastPixel(pixel: Pixel, skipUid: string | undefined) {
-	const clients = sockets.size;
-	const { x, y, r, g, b } = pixel;
-	const data = { clients, x, y, r, g, b };
-	const message = JSON.stringify(data);
+	const message = JSON.stringify(pixel);
 	broadcastRaw(message, skipUid);
 }
 
