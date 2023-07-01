@@ -1,4 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak@v12.3.0/mod.ts";
+import { Application, Router } from "https://deno.land/x/oak@v12.5.0/mod.ts";
 import { HEIGHT, WIDTH } from "./constants.ts";
 import { isPerfectPixel } from "./pixel.ts";
 import type { Pixel } from "./pixel.ts";
