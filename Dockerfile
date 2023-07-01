@@ -1,6 +1,6 @@
 FROM docker.io/lukechannings/deno:latest AS deno
 
-FROM docker.io/library/debian:bullseye-slim
+FROM docker.io/library/debian:bookworm-slim
 
 COPY --from=deno /usr/bin/deno /usr/local/bin/
 RUN useradd --uid 1993 --user-group deno \
