@@ -16,9 +16,7 @@
 		"useUnknownInCatchVariables": true
 	},
 	"fmt": {
-		"options": {
-			"useTabs": true
-		}
+		"useTabs": true
 	},
 	"lint": {
 		"rules": {
