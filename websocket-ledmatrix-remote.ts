@@ -24,7 +24,7 @@ router.get("/ws", (ctx) => {
 				"current connections",
 				sockets.size,
 			);
-		} catch (error: unknown) {
+		} catch (error) {
 			console.log("ERROR onopen", error);
 			ws.close(1008, "Server Error");
 		}
@@ -49,7 +49,7 @@ router.get("/ws", (ctx) => {
 			} else {
 				ws.send("invalid pixel data");
 			}
-		} catch (error: unknown) {
+		} catch (error) {
 			console.log(
 				"onmessage ERROR",
 				uid,
@@ -92,7 +92,7 @@ function broadcastRaw(message: string, skipUid: string | undefined) {
 		if (uid !== skipUid && ws.readyState === ws.OPEN) {
 			try {
 				ws.send(message);
-			} catch (error: unknown) {
+			} catch (error) {
 				console.log("ERROR on broadcast", error);
 				try {
 					ws.close(1008, "Server Error");

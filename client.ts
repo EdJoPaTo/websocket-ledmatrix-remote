@@ -46,7 +46,7 @@ function connect(server: string, onPixel: PixelFunc) {
 			} else {
 				console.log("Got unknown message from server", m.data);
 			}
-		} catch (error: unknown) {
+		} catch (error) {
 			console.error("onmessage ERROR", error, m.data);
 		}
 	});

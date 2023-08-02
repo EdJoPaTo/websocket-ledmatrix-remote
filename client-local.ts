@@ -12,7 +12,7 @@ setInterval(() => {
 	const b = Math.floor(Math.random() * 256);
 	try {
 		client.send({ x, y, r, g, b });
-	} catch (error: unknown) {
+	} catch (error) {
 		console.warn(
 			"ERROR sendPixel",
 			error instanceof Error ? error.message : error,
