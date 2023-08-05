@@ -19,9 +19,9 @@ router.get("/ws", (ctx) => {
 		try {
 			sockets.set(uid, ws);
 			console.log(
-				"Connected with new client",
+				"Client +",
 				uid,
-				"current connections",
+				"current",
 				sockets.size,
 			);
 		} catch (error) {
@@ -32,9 +32,9 @@ router.get("/ws", (ctx) => {
 	ws.addEventListener("close", () => {
 		sockets.delete(uid);
 		console.log(
-			"Disconncted from client",
+			"Client -",
 			uid,
-			"current connections",
+			"current",
 			sockets.size,
 		);
 	});
