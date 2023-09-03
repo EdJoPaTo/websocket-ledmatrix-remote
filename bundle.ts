@@ -1,4 +1,4 @@
-import { bundle } from "https://deno.land/x/emit@0.24.0/mod.ts";
+import { bundle } from "https://deno.land/x/emit@0.27.0/mod.ts";
 const { code } = await bundle("client-web.ts", {
 	compilerOptions: {
 		inlineSourceMap: true,
