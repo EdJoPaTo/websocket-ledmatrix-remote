@@ -30,9 +30,12 @@ input {
 	accent-color: blue;
 }
 
-#field {
+#matrix {
+	-webkit-user-select: none;
+	touch-action: none;
 	user-select: none;
 }
+
 .row {
 	display: flex;
 	flex-direction: row;
@@ -47,5 +50,4 @@ input {
 	background-color: black;
 	cursor: pointer;
 	margin: 1px;
-	touch-action: none;
 }
