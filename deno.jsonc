@@ -16,9 +16,11 @@
 		"useUnknownInCatchVariables": true
 	},
 	"fmt": {
+		"exclude": ["public/client.js"],
 		"useTabs": true
 	},
 	"lint": {
+		"exclude": ["public/client.js"],
 		"rules": {
 			// https://lint.deno.land/?all=on
 			"include": [
