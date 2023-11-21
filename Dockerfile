@@ -1,15 +1,13 @@
-FROM docker.io/lukechannings/deno:latest AS deno
+FROM docker.io/lukechannings/deno:latest AS builder
+
+WORKDIR /app
+
+COPY . ./
+RUN deno run --allow-env --allow-read --allow-write --allow-net=deno.land bundle.ts
+RUN deno compile --allow-net=:8080 --allow-read websocket-ledmatrix-remote.ts
+
 
 FROM docker.io/library/debian:bookworm-slim
-
-COPY --from=deno /usr/bin/deno /usr/local/bin/
-RUN useradd --uid 1993 --user-group deno \
-	&& mkdir -p /deno-dir \
-	&& chown deno:deno /deno-dir \
-	&& deno --version
-ENV DENO_DIR /deno-dir/
-ENV DENO_INSTALL_ROOT /usr/local
-
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get clean \
@@ -18,8 +16,7 @@ RUN apt-get update \
 WORKDIR /app
 EXPOSE 8080
 
-COPY . ./
-RUN deno cache *.ts
-RUN deno run --allow-env --allow-read --allow-write --allow-net=deno.land bundle.ts
+COPY --from=builder /app/websocket-ledmatrix-remote /usr/local/bin/
+COPY --from=builder /app/public public
 
-CMD ["deno", "run", "--allow-net=:8080", "--allow-read", "websocket-ledmatrix-remote.ts"]
+CMD ["websocket-ledmatrix-remote"]
