@@ -1,5 +1,5 @@
-import { Client } from "./client.ts";
 import { getCurrentColor } from "./client-web-color.ts";
+import { Client } from "./client.ts";
 import { HEIGHT, WIDTH } from "./constants.ts";
 
 const SERVER = location.origin.replace(/^http/, "ws") + "/ws";
