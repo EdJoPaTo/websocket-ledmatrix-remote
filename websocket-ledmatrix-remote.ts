@@ -83,7 +83,7 @@ app.use(async (ctx) => {
 	ctx.response.headers.set("Content-Security-Policy", CONTENT_SECURITY_POLICY);
 	await ctx.send({
 		index: "index.html",
-		// maxage: 1000 * 60 * 60 * 20, // 20h
+		maxage: 1000 * 60 * 30, // 30 min
 		root: `${Deno.cwd()}/public`,
 	});
 });
