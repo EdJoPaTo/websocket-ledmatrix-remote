@@ -41,6 +41,7 @@ footer {
 	gap: 1px;
 	grid-template-columns: repeat(8, 1fr);
 	grid-template-rows: repeat(32, 1fr);
+	height: 70vh;
 	margin: 0.5rem auto;
 	place-items: stretch;
 	touch-action: none;
