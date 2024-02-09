@@ -1,5 +1,6 @@
 html {
 	--color: whitesmoke;
+	color: var(--color);
 }
 
 html, body {
@@ -8,30 +9,17 @@ html, body {
 	text-align: center;
 }
 
-header, footer a {
-	color: var(--color);
+a {
+	color: inherit;
 }
 
 footer {
 	margin: 1rem auto;
 }
 
-input {
-	width: 95%;
-	margin: auto 1vw;
-}
-#r {
-	accent-color: red;
-}
-#g {
-	accent-color: green;
-}
-#b {
-	accent-color: blue;
-}
-
 #matrix {
 	-webkit-user-select: none;
+	margin: 0.5rem auto;
 	touch-action: none;
 	user-select: none;
 }
