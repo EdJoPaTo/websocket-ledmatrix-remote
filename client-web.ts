@@ -35,8 +35,6 @@ matrix.addEventListener("touchmove", (event) => {
 });
 
 for (let y = 0; y < HEIGHT; y++) {
-	const row = document.createElement("div");
-	row.classList.add("row");
 	for (let x = 0; x < WIDTH; x++) {
 		const element = document.createElement("div");
 		element.id = `field${x}x${y}`;
@@ -49,30 +47,20 @@ for (let y = 0; y < HEIGHT; y++) {
 			}
 		});
 
-		row.append(element);
+		matrix.append(element);
 	}
-
-	matrix.append(row);
 }
 
 // Fade to black
 setInterval(() => {
-	for (let y = 0; y < HEIGHT; y++) {
-		for (let x = 0; x < WIDTH; x++) {
-			const field = document.querySelector(
-				`#field${x}x${y}`,
-			) as (HTMLElement | undefined);
-			if (!field) {
-				continue;
-			}
-
-			const color = field.style.backgroundColor;
-			if (color.startsWith("rgb(")) {
-				const [r, g, b] = color.slice(4, -1).split(",").map((o) =>
-					Math.max(0, Math.floor(Number(o.trim()) * 0.99))
-				);
-				field.style.backgroundColor = r || g || b ? `rgb(${r},${g},${b})` : "";
-			}
+	const fields = document.querySelectorAll<HTMLElement>("#matrix div");
+	for (const field of fields) {
+		const color = field.style.backgroundColor;
+		if (color.startsWith("rgb(")) {
+			const [r, g, b] = color.slice(4, -1).split(",").map((o) =>
+				Math.max(0, Math.floor(Number(o.trim()) * 0.99))
+			);
+			field.style.backgroundColor = r || g || b ? `rgb(${r},${g},${b})` : "";
 		}
 	}
 }, 35);
