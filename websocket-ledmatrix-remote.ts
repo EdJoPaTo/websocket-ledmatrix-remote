@@ -6,12 +6,12 @@ const sockets = new Map<string, WebSocket>();
 const app = new Application({ logErrors: false });
 const router = new Router();
 
-router.get("/ws", (ctx) => {
-	if (!ctx.isUpgradable) {
-		ctx.throw(501);
+router.get("/ws", (context) => {
+	if (!context.isUpgradable) {
+		context.throw(501);
 	}
 
-	const ws = ctx.upgrade();
+	const ws = context.upgrade();
 	const uid = crypto.randomUUID();
 
 	ws.addEventListener("open", () => {
@@ -37,12 +37,12 @@ router.get("/ws", (ctx) => {
 			sockets.size,
 		);
 	});
-	ws.addEventListener("error", (ev) => {
-		console.log("WebSocket ERROR", ev);
+	ws.addEventListener("error", (event) => {
+		console.log("WebSocket ERROR", event);
 	});
-	ws.addEventListener("message", (m) => {
+	ws.addEventListener("message", (message) => {
 		try {
-			const data = JSON.parse(m.data) as unknown;
+			const data = JSON.parse(message.data) as unknown;
 			if (isPerfectPixel(data, WIDTH, HEIGHT)) {
 				broadcastPixel(data, undefined);
 			} else {
@@ -59,13 +59,13 @@ router.get("/ws", (ctx) => {
 	});
 });
 
-router.get("/healthz", (ctx) => {
-	ctx.response.type = "text/plain";
-	ctx.response.headers.set(
+router.get("/healthz", (context) => {
+	context.response.type = "text/plain";
+	context.response.headers.set(
 		"Cache-Control",
 		"no-store",
 	);
-	ctx.response.body = "ok";
+	context.response.body = "ok";
 });
 
 app.use(router.routes());
@@ -79,9 +79,12 @@ const CONTENT_SECURITY_POLICY = [
 	"script-src 'self'",
 	"style-src 'self'",
 ].join("; ");
-app.use(async (ctx) => {
-	ctx.response.headers.set("Content-Security-Policy", CONTENT_SECURITY_POLICY);
-	await ctx.send({
+app.use(async (context) => {
+	context.response.headers.set(
+		"Content-Security-Policy",
+		CONTENT_SECURITY_POLICY,
+	);
+	await context.send({
 		index: "index.html",
 		maxage: 1000 * 60 * 30, // 30 min
 		root: `${Deno.cwd()}/public`,
