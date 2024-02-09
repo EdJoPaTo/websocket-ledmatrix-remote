@@ -71,7 +71,17 @@ router.get("/healthz", (ctx) => {
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+const CONTENT_SECURITY_POLICY = [
+	"default-src 'none'",
+	"base-uri 'none'",
+	"form-action 'none'",
+	"frame-ancestors 'none'",
+	"connect-src 'self'",
+	"script-src 'self'",
+	"style-src 'self'",
+].join("; ");
 app.use(async (ctx) => {
+	ctx.response.headers.set("Content-Security-Policy", CONTENT_SECURITY_POLICY);
 	await ctx.send({
 		index: "index.html",
 		// maxage: 1000 * 60 * 60 * 20, // 20h
