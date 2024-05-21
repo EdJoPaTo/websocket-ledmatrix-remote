@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . ./
 RUN deno run \
 	--allow-env \
-	--allow-net=deno.land \
+	--allow-net=jsr.io \
 	--allow-read \
 	--allow-write \
 	bundle.ts
