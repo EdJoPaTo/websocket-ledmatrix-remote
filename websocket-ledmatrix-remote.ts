@@ -28,13 +28,19 @@ router.get("/ws", (context) => {
 			ws.close(1008, "Server Error");
 		}
 	});
-	ws.addEventListener("close", () => {
+	ws.addEventListener("close", (event) => {
 		sockets.delete(uid);
 		console.log(
 			"Client -",
 			uid,
 			"current",
 			sockets.size,
+			"wasClean:",
+			event.wasClean,
+			"code:",
+			event.code,
+			"reason:",
+			event.reason,
 		);
 	});
 	ws.addEventListener("error", (event) => {
