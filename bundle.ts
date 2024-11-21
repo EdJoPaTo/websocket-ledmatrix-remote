@@ -1,4 +1,4 @@
-import { bundle } from "jsr:@deno/emit@0.40";
+import { bundle } from "jsr:@deno/emit@0.46";
 
 const { code } = await bundle("client-web.ts", {
 	minify: true,
