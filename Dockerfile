@@ -16,7 +16,7 @@ RUN deno compile \
 	websocket-ledmatrix-remote.ts
 
 
-FROM docker.io/library/debian:bookworm-slim
+FROM docker.io/library/debian:bookworm-slim AS final
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get clean \
