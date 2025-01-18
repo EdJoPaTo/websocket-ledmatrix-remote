@@ -4,7 +4,7 @@ RUN apt-get update \
 	&& apt-get install -y unzip
 WORKDIR /app
 COPY . ./
-RUN deno run \
+RUN deno \
 	--allow-env \
 	--allow-net=jsr.io \
 	--allow-read \
@@ -12,7 +12,7 @@ RUN deno run \
 	bundle.ts
 RUN deno compile \
 	--allow-net=:8080 \
-	--allow-read \
+	--include=public \
 	websocket-ledmatrix-remote.ts
 
 
@@ -25,7 +25,5 @@ RUN apt-get update \
 WORKDIR /app
 EXPOSE 8080
 
-COPY --from=builder /app/public public
 COPY --from=builder /app/websocket-ledmatrix-remote /usr/local/bin/
-
 CMD ["websocket-ledmatrix-remote"]
