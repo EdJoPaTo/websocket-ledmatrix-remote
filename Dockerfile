@@ -1,15 +1,13 @@
 FROM docker.io/denoland/deno:latest AS builder
 RUN apt-get update \
-	&& apt-get upgrade -y \
-	&& apt-get install -y unzip
+	&& apt-get upgrade -y
 WORKDIR /app
 COPY . ./
-RUN deno \
-	--allow-env \
-	--allow-net=jsr.io \
-	--allow-read \
-	--allow-write \
-	bundle.ts
+RUN deno bundle \
+	--minify \
+	--output=public/client.js \
+	--sourcemap \
+	client-web.ts
 RUN deno compile \
 	--allow-net=:8080 \
 	--include=public \
