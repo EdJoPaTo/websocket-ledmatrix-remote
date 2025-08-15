@@ -17,12 +17,7 @@ router.get("/ws", (context) => {
 	ws.addEventListener("open", () => {
 		try {
 			sockets.set(uid, ws);
-			console.log(
-				"Client +",
-				uid,
-				"current",
-				sockets.size,
-			);
+			console.log("Client +", uid, "current", sockets.size);
 		} catch (error) {
 			console.log("ERROR onopen", error);
 			ws.close(1008, "Server Error");
@@ -67,10 +62,7 @@ router.get("/ws", (context) => {
 
 router.get("/healthz", (context) => {
 	context.response.type = "text/plain";
-	context.response.headers.set(
-		"Cache-Control",
-		"no-store",
-	);
+	context.response.headers.set("Cache-Control", "no-store");
 	context.response.body = "ok";
 });
 
