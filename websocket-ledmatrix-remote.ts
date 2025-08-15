@@ -90,7 +90,7 @@ app.use(async (context) => {
 });
 
 console.log("HTTP webserver running. Access it at: http://localhost:8080/");
-await app.listen({ port: 8080 });
+await app.listen({ port: 8080, hostname: "[::]" });
 
 function broadcastPixel(pixel: Pixel, skipUid: string | undefined) {
 	const message = JSON.stringify(pixel);

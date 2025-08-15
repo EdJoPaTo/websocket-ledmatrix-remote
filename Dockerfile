@@ -9,7 +9,7 @@ RUN deno bundle \
 	--sourcemap \
 	client-web.ts
 RUN deno compile \
-	--allow-net=:8080 \
+	--allow-net=:8080,[::]:8080 \
 	--include=public \
 	websocket-ledmatrix-remote.ts
 
