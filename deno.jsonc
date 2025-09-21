@@ -10,9 +10,7 @@
 		"noUncheckedIndexedAccess": true,
 		"useUnknownInCatchVariables": true
 	},
-	"exclude": [
-		"public/client.js"
-	],
+	"exclude": ["public/client.js"],
 	"fmt": {
 		"useTabs": true
 	},
@@ -33,5 +31,8 @@
 				"verbatim-module-syntax"
 			]
 		}
+	},
+	"imports": {
+		"oak": "jsr:@oak/oak@17"
 	}
 }

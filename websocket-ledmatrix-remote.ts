@@ -1,4 +1,4 @@
-import { Application, Router } from "jsr:@oak/oak@17";
+import { Application, Router } from "oak";
 import { HEIGHT, WIDTH } from "./constants.ts";
 import { isPerfectPixel, type Pixel } from "./pixel.ts";
 
