@@ -18,10 +18,14 @@ FROM docker.io/library/debian:trixie-slim AS final
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /var/cache/* /var/log/*
+	&& groupadd --system --gid 923 runner \
+	&& useradd --system --uid 923 --gid 923 --create-home runner \
+	&& rm -rf /etc/*- /var/lib/apt/lists/* /var/cache/* /var/log/*
 
 WORKDIR /app
 EXPOSE 8080
 
 COPY --from=builder /app/websocket-ledmatrix-remote /usr/local/bin/
+
+USER runner
 CMD ["websocket-ledmatrix-remote"]
