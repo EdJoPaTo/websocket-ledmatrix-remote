@@ -2,6 +2,9 @@
 *.md
 **/*.test.*
 **/test.*
+coverage
 Dockerfile
+docs
+node_modules
 
-public/client.js
+public/client.js*

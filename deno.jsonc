@@ -10,7 +10,12 @@
 		"noUncheckedIndexedAccess": true,
 		"useUnknownInCatchVariables": true
 	},
-	"exclude": ["public/client.js"],
+	"exclude": [
+		"./coverage/",
+		"./docs/",
+		"./node_modules/",
+		"./public/client.js"
+	],
 	"fmt": {
 		"useTabs": true
 	},
