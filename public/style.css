@@ -7,7 +7,8 @@ a {
 	color: inherit;
 }
 
-html, body {
+html,
+body {
 	background-color: #222;
 	font-family: system-ui, -apple-system, sans-serif;
 	margin: 0;
