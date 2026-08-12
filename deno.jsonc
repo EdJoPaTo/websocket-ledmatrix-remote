@@ -4,11 +4,9 @@
 	// https://www.typescriptlang.org/tsconfig/
 	"compilerOptions": {
 		"lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"],
-		"noImplicitOverride": true,
 		"noImplicitReturns": true,
 		"noPropertyAccessFromIndexSignature": true,
-		"noUncheckedIndexedAccess": true,
-		"useUnknownInCatchVariables": true
+		"noUncheckedIndexedAccess": true
 	},
 	"exclude": [
 		"./coverage/",
@@ -19,9 +17,16 @@
 	"fmt": {
 		"useTabs": true
 	},
+	"imports": {
+		"oak": "jsr:@oak/oak@17"
+	},
 	"lint": {
 		"rules": {
 			// https://lint.deno.land/?all=on
+			"tags": [
+				"recommended",
+				"workspace"
+			],
 			"include": [
 				"camelcase",
 				"default-param-last",
@@ -29,15 +34,21 @@
 				"explicit-module-boundary-types",
 				"no-await-in-loop",
 				"no-eval",
+				"no-inferrable-types",
+				"no-node-globals",
 				"no-non-null-asserted-optional-chain",
 				"no-non-null-assertion",
+				"no-process-global",
+				"no-self-compare",
 				"no-slow-types",
 				"no-sparse-arrays",
+				"no-sync-fn-in-async-fn",
+				"no-useless-rename",
+				"prefer-ascii",
+				"single-var-declarator",
+				"triple-slash-reference",
 				"verbatim-module-syntax"
 			]
 		}
-	},
-	"imports": {
-		"oak": "jsr:@oak/oak@17"
 	}
 }
