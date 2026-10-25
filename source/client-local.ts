@@ -1,7 +1,9 @@
+import { env } from "node:process";
+
 import { Client } from "./client.ts";
 import { HEIGHT, WIDTH } from "./constants.ts";
 
-const SERVER = Deno.env.get("SERVER") ?? "ws://localhost:8080/ws";
+const SERVER = env["SERVER"] ?? "ws://localhost:8080/ws";
 const client = new Client(SERVER);
 
 setInterval(() => {
