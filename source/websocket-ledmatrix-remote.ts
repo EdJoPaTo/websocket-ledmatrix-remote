@@ -60,12 +60,6 @@ router.get("/ws", (context) => {
 	});
 });
 
-router.get("/healthz", (context) => {
-	context.response.type = "text/plain";
-	context.response.headers.set("Cache-Control", "no-store");
-	context.response.body = "ok";
-});
-
 app.use(router.routes());
 app.use(router.allowedMethods());
 const CONTENT_SECURITY_POLICY = [
