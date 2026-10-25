@@ -6,7 +6,7 @@ which listens to this WebSocket Server.
 
 Feel free to send stuff to it.
 
-But please be a friendly human being and dont be overly spammy.
+But please be a friendly human being and don't be overly spammy.
 
 ## Usage
 
