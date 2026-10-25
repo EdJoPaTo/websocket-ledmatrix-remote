@@ -7,11 +7,11 @@ RUN deno bundle \
 	--minify \
 	--output=public/client.js \
 	--sourcemap \
-	client-web.ts
+	source/client-web.ts
 RUN deno compile \
 	--allow-net=:8080,[::]:8080 \
 	--include=public \
-	websocket-ledmatrix-remote.ts
+	source/websocket-ledmatrix-remote.ts
 
 
 FROM docker.io/library/debian:trixie-slim AS final

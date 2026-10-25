@@ -85,7 +85,7 @@ app.use(async (context) => {
 	await context.send({
 		index: "index.html",
 		maxage: 1000 * 60 * 30, // 30 min
-		root: import.meta.dirname + "/public",
+		root: import.meta.dirname + "/../public",
 	});
 });
 
